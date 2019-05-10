@@ -1,0 +1,65 @@
+@import "~codyhouse-framework/main/assets/css/global";
+
+@import "fonts";
+@import "header";
+@import "pricing";
+@import "card";
+@import "alert";
+@import "dropdown";
+@import "hero";
+@import "table";
+@import "menu";
+@import "modal";
+@import "pagination";
+@import "newsletter";
+@import "testimonials";
+
+body {
+  font-family: IRANSans, sans-serif;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+a {
+  text-decoration: none;
+}
+
+div {
+  margin: unset;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.flex--gap-sm > *,
+.flex-gap--sm > * {
+  margin-right: unset;
+  margin-left: var(--space-sm);
+}
+
+.flex--gap-xs > *,
+.flex-gap--xs > * {
+  margin-right: unset;
+  margin-left: var(--space-xs);
+}
+
+.flex--gap-xs > *:last-child,
+.flex-gap--xs > *:last-child {
+  margin-right: unset;
+  margin-left: 0;
+}
+
+.text--right {
+  text-align: right;
+}
+
+.text--left {
+  text-align: left;
+}

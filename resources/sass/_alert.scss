@@ -1,0 +1,57 @@
+/* -------------------------------- 
+
+Title: Alert
+Descr: Feedback message
+
+-------------------------------- */
+
+.alert {
+  padding: var(--space-xs) var(--space-sm);
+  background-color: alpha(var(--color-primary), 0.2);
+  border-radius: var(--radius);
+  color: var(--color-contrast-higher);
+  // hide element
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+.alert__link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.alert__close-btn {
+  flex-shrink: 0;
+  margin-right: var(--space-sm);
+  cursor: pointer;
+
+  .icon {
+    display: block;
+  }
+}
+
+// themes
+.alert--success {
+  background-color: alpha(var(--color-success), 0.2);
+}
+
+.alert--error {
+  background-color: alpha(var(--color-error), 0.2);
+}
+
+.alert--warning {
+  background-color: alpha(var(--color-warning), 0.2);
+}
+
+// toggle visibility
+.alert--is-visible {
+  position: static;
+  clip: auto;
+  clip-path: none;
+}
+
+.icon-text > *:nth-child(2) {
+    margin-left: inherit;
+    margin-right: var(--space-xxs)
+}

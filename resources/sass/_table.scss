@@ -1,0 +1,256 @@
+/* -------------------------------- 
+
+Title: Table
+Descr: Data tables used to organize and display information in rows and columns
+
+-------------------------------- */
+
+:root {
+  --table-cell-width-xs: 40px;
+  --table-cell-width-sm: 80px;
+  --table-cell-width-md: 120px;
+  --table-cell-width-lg: 360px;
+  --table-cell-width-xl: 420px;
+}
+
+.table {
+  font-size: 0.875em;
+  position: relative;
+  border-bottom: 2px solid var(--color-contrast-low);
+
+  table {
+    vertical-align: top;
+    width: 100%;
+  }
+
+  th,
+  td {
+    // cell style
+    padding: var(--space-sm);
+    text-align: center;
+  }
+
+  th {
+    // header cell style
+    font-weight: bold;
+    color: var(--color-contrast-higher);
+  }
+}
+
+.table__inner {
+//   overflow: auto;
+//   -webkit-overflow-scrolling: touch;
+//   scroll-behavior: smooth;
+}
+
+.table__header {
+  border-bottom: 2px solid var(--color-contrast-low);
+  background-color: var(--color-bg);
+}
+
+.table__body {
+  tr {
+    &:nth-child(odd) {
+      background-color: var(--color-contrast-lower);
+    }
+  }
+}
+
+.table {
+  th,
+  td {
+    .icon {
+      // prevent icons from shrinking if used within cells
+      display: block;
+      max-width: initial;
+    }
+  }
+}
+
+.table__scrolling-indicator,
+.table__body-shadow {
+  display: none; // hide elements that require js
+}
+
+.js {
+  .table {
+    &::after {
+      // right gradient - visible when scrolling is enabled
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -1px;
+      height: 100%;
+      width: 36px;
+      background: linear-gradient(to right, alpha(var(--color-bg), 0), var(--color-bg));
+      z-index: 1;
+      pointer-events: none;
+      display: none;
+    }
+
+    &.table--show-scrolling-indicator {
+      &::after {
+        display: block;
+      }
+
+      .table__scrolling-indicator {
+        display: flex;
+      }
+    }
+
+    &.table--scrolling-x-started .table__scrolling-indicator {
+      display: none; // hide scrolling indicator when user starts scrolling
+    }
+  }
+
+  .table__scrolling-indicator {
+    // icon - scrolling indicator
+    @include reset;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: calc(50% - 20px);
+    right: 6px;
+    z-index: 2;
+    background-color: var(--color-contrast-higher);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    animation: hintRight 1s;
+
+    display: none;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: block;
+      color: var(--color-bg);
+    }
+  }
+
+  @supports (--css: variables) {
+    .table--sticky-header {
+      border-bottom: 0;
+
+      .table__header {
+        border-bottom: 0;
+
+        tr {
+          display: block;
+        }
+      }
+
+      .table__body {
+        display: block;
+        height: 500px;
+        max-height: 60vh;
+        width: 100%;
+        overflow: auto;
+
+        tr {
+          background-color: var(--color-bg);
+
+          &:nth-child(even) {
+            background-color: var(--color-contrast-lower);
+          }
+        }
+      }
+
+      .table__body-shadow {
+        // tbody inner shadow
+        display: block;
+        position: absolute;
+        width: 120%;
+        margin-left: -10%;
+        left: 0;
+        box-shadow: inset 0 1px 3px rgba(#000, 0.2), inset 0 -1px 3px rgba(#000, 0.2);
+        pointer-events: none;
+      }
+
+      &.table--scrolling-x {
+        .table__body {
+          overflow-x: hidden;
+        }
+
+        tr > :last-child {
+          padding-right: 1.6rem; // fix issue with right scrollbar
+        }
+      }
+
+      &.table--js-is-loading {
+        opacity: 0; // hide table while js loads
+      }
+    }
+  }
+}
+
+@keyframes hintRight {
+  0%,
+  50%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+// utility classes
+.table {
+  .table__cell--no-wrap {
+    white-space: nowrap;
+  }
+
+  .table__cell--center-x {
+    text-align: center;
+
+    > * {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .table__cell--center-y {
+    vertical-align: middle;
+  }
+
+  .table__cell--left {
+    text-align: left;
+  }
+
+  .table__cell--right {
+    text-align: right;
+
+    > * {
+      margin-left: auto;
+    }
+  }
+
+  .table__cell--top {
+    vertical-align: top;
+  }
+
+  .table__cell--bottom {
+    vertical-align: bottom;
+  }
+
+  .table__row--is-hidden {
+    height: 0;
+    margin: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    > * {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      line-height: 0;
+
+      * {
+        display: none;
+      }
+    }
+  }
+}

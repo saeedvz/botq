@@ -1,0 +1,119 @@
+/* -------------------------------- 
+
+Title: Pagination 
+Descr: Component used to navigate through pages of related content
+
+-------------------------------- */
+
+:root {
+  --pagination-item-padding: var(--space-xs);
+  --pagination-item-gap: var(--space-xxxs);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: calc(-1 * var(--pagination-item-gap));
+
+  > * {
+    margin-right: var(--pagination-item-gap);
+    margin-bottom: var(--pagination-item-gap);
+    align-items: center;
+    display: inline-block; // flex fallback
+    display: inline-flex;
+  }
+
+  > *:last-child {
+    margin-right: 0;
+  }
+}
+
+// Optional -> push first + last item to sides
+// .pagination__list {
+//     width: 100%;
+
+//     > *:first-child {
+//         margin-right: auto;
+//     }
+
+//     > *:last-child {
+//         margin-left: auto;
+//     }
+// }
+
+.pagination__item {
+  display: inline-block; // flex fallback
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1;
+  padding-top: var(--pagination-item-padding);
+  padding-bottom: var(--pagination-item-padding);
+  padding-left: calc(1.355 * var(--pagination-item-padding));
+  padding-right: calc(1.355 * var(--pagination-item-padding));
+  border-radius: 0.25em;
+  text-decoration: none;
+  height: 100%;
+
+  &:hover {
+    background-color: var(--color-contrast-lower);
+  }
+
+  &:active {
+    background-color: var(--color-contrast-low);
+  }
+
+  .icon {
+    display: inline-block;
+    color: currentColor;
+  }
+}
+
+.pagination__item--selected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  @include fontSmooth;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+  }
+
+  &:active {
+    background-color: var(--color-primary-dark);
+  }
+}
+
+.pagination__item--ellipsis {
+  color: var(--color-contrast-high);
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+}
+
+.pagination__item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pagination__jumper {
+  align-items: center;
+  justify-content: center;
+
+  .form-control {
+    width: 3.2em;
+    margin-right: var(--space-xs);
+    padding: var(--pagination-item-padding);
+  }
+
+  em {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}

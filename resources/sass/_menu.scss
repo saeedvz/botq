@@ -1,0 +1,80 @@
+/* -------------------------------- 
+
+Title: Menu
+Descr: Application menu that provides access to a set of functionalities
+
+-------------------------------- */
+
+:root {
+  --menu-item-padding: var(--space-xxs) var(--space-sm);
+}
+
+.menu-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.menu {
+  list-style: none;
+  width: 180px;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 4px);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-xxs) 0;
+  border-radius: 0.25em;
+  z-index: var(--zindex-popover);
+
+  transform: translateY(-4px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s ease-out;
+
+  @include breakpoint(md) {
+    font-size: 0.75em;
+  }
+}
+
+.menu--is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu__item {
+  text-decoration: none; // reset link style
+  display: block;
+  padding: var(--menu-item-padding);
+  color: var(--color-contrast-high);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+
+  &:hover {
+    background-color: var(--color-contrast-lower);
+  }
+}
+
+.menu__label-wrapper {
+  padding: var(--menu-item-padding);
+}
+
+.menu__label {
+  text-transform: uppercase;
+  font-size: 0.6em;
+  letter-spacing: 0.1em;
+  color: var(--color-contrast-medium);
+}
+
+.menu__separator {
+  height: 1px;
+  background-color: var(--color-contrast-low);
+  margin: var(--menu-item-padding);
+}
+
+.icon.menu__icon {
+  color: var(--color-contrast-medium);
+}
