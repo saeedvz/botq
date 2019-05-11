@@ -8,6 +8,7 @@
                 <small class="hero__label">{{ env('APP_NAME') }}</small>
                 <h1>{{ __('site_title') }}</h1>
                 <p>{{ __('site_slug') }}</p>
+                <p>پیشنهادی داشتین توی <a href="https://twitter.com/saeedvaziry" target="_blank">Twitter</a> بفرستین</p>
             </div>
             <a href="{{ route('register') }}" class="btn btn--primary">{{ __('Register') }}</a>
         </div>
