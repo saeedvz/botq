@@ -8,7 +8,7 @@
             <div class="alert alert--is-visible js-alert margin-bottom--sm " role="alert">
                 <div class="flex flex--center-y flex--space-between">
                     <div class="alert__content icon-text">
-                        <p>{{ __('add_channel_note_1') }} <a href="https://t.me/{{ env('TELEGRAM_BOT_USERNAME') }}" target="_blank">{{ env('BOT_USERNAME') }}</a> {{ __('add_channel_note_2') }}</p>
+                        <p>{{ __('add_channel_note_1') }} <a href="https://t.me/{{ env('TELEGRAM_BOT_USERNAME') }}" target="_blank">{{ env('TELEGRAM_BOT_USERNAME') }}</a> {{ __('add_channel_note_2') }}</p>
                     </div>
                     <button class="reset alert__close-btn js-alert__close-btn">
                         <svg class="icon" viewBox="0 0 24 24">
